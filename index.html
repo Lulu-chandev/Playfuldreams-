@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT. Playful Dreams - Mainan Edukatif</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Comic Sans MS', cursive, Arial, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .poster {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .header {
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255,255,255,0.1) 10px,
+                rgba(255,255,255,0.1) 20px
+            );
+            animation: move 20s linear infinite;
+        }
+        
+        @keyframes move {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header .tagline {
+            font-size: 1.2em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 25px;
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            border-radius: 15px;
+            border: 3px solid #ff6b9d;
+        }
+        
+        .intro h2 {
+            color: #2d3748;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        
+        .intro p {
+            font-size: 1.1em;
+            color: #4a5568;
+            line-height: 1.6;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border: 3px solid;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .feature-card:hover::before {
+            left: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+        
+        .feature-card.cognitive {
+            border-color: #4299e1;
+            background: linear-gradient(135deg, #ebf8ff 0%, #bee3f8 100%);
+        }
+        
+        .feature-card.motor {
+            border-color: #48bb78;
+            background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%);
+        }
+        
+        .feature-card.social {
+            border-color: #ed8936;
+            background: linear-gradient(135deg, #fffaf0 0%, #fbd38d 100%);
+        }
+        
+        .feature-card.creative {
+            border-color: #9f7aea;
+            background: linear-gradient(135deg, #faf5ff 0%, #e9d8fd 100%);
+        }
+        
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        
+        .feature-card p {
+            color: #4a5568;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        
+        .feature-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .feature-card li {
+            padding: 5px 0;
+            color: #4a5568;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .feature-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #48bb78;
+            font-weight: bold;
+        }
+        
+        .product-showcase {
+            background: linear-gradient(120deg, #667eea 0%, #764ba2 100%);
+            margin: 40px -30px 0;
+            padding: 40px 30px;
+            color: white;
+        }
+        
+        .product-showcase h2 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .product {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .product:hover {
+            transform: scale(1.05);
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .product-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .product h4 {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .product p {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        
+        .benefits {
+            background: #f7fafc;
+            margin: 40px -30px 0;
+            padding: 40px 30px;
+        }
+        
+        .benefits h2 {
+            text-align: center;
+            color: #2d3748;
+            font-size: 2em;
+            margin-bottom: 30px;
+        }
+        
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .benefit {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .benefit:hover {
+            transform: translateY(-3px);
+        }
+        
+        .benefit-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .benefit h4 {
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .benefit p {
+            color: #4a5568;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+        
+        .footer {
+            background: linear-gradient(45deg, #2d3748 0%, #4a5568 100%);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin: 40px -30px 0;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .contact-icon {
+            font-size: 1.5em;
+        }
+        
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .floating-toys {
+            position: fixed;
+            font-size: 2em;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .toy1 { top: 10%; left: 5%; animation-delay: -1s; }
+        .toy2 { top: 20%; right: 10%; animation-delay: -2s; }
+        .toy3 { top: 60%; left: 8%; animation-delay: -3s; }
+        .toy4 { top: 70%; right: 5%; animation-delay: -4s; }
+        .toy5 { top: 40%; left: 3%; animation-delay: -5s; }
+        .toy6 { top: 30%; right: 3%; animation-delay: -6s; }
+        
+        @media (max-width: 768px) {
+            .poster {
+                margin: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 20px 15px;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .products {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Toys -->
+    <div class="floating-toys toy1">🧸</div>
+    <div class="floating-toys toy2">🎲</div>
+    <div class="floating-toys toy3">🚂</div>
+    <div class="floating-toys toy4">🎨</div>
+    <div class="floating-toys toy5">🧩</div>
+    <div class="floating-toys toy6">⚽</div>
+
+    <div class="poster">
+        <div class="header">
+            <h1>PT. PLAYFUL DREAMS</h1>
+            <p class="tagline">"Bermain, Belajar, Bertumbuh Bersama"</p>
+        </div>
+        
+        <div class="content">
+            <div class="intro">
+                <h2>🌟 Mainan Edukatif Berkualitas Tinggi 🌟</h2>
+                <p>Kami menciptakan mainan edukatif yang tidak hanya menyenangkan, tetapi juga mendukung perkembangan optimal anak-anak Indonesia. Setiap produk dirancang dengan cermat oleh ahli perkembangan anak dan telah lulus uji keamanan internasional.</p>
+            </div>
+            
+            <div class="features">
+                <div class="feature-card cognitive">
+                    <span class="feature-icon">🧠</span>
+                    <h3>Pengembangan Kognitif</h3>
+                    <p>Mainan yang merangsang kemampuan berpikir, memori, dan pemecahan masalah.</p>
+                    <ul>
+                        <li>Puzzle edukatif berbagai tingkat kesulitan</li>
+                        <li>Permainan logika dan strategi</li>
+                        <li>Alat belajar matematika dan sains</li>
+                        <li>Game memori dan konsentrasi</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card motor">
+                    <span class="feature-icon">🤸</span>
+                    <h3>Kemampuan Motorik</h3>
+                    <p>Mengembangkan koordinasi dan keterampilan motorik halus serta kasar.</p>
+                    <ul>
+                        <li>Mainan susun dan bangun</li>
+                        <li>Alat musik anak-anak</li>
+                        <li>Permainan keseimbangan</li>
+                        <li>Mainan manipulatif</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card social">
+                    <span class="feature-icon">👫</span>
+                    <h3>Keterampilan Sosial</h3>
+                    <p>Membantu anak belajar berinteraksi, berbagi, dan bekerja sama.</p>
+                    <ul>
+                        <li>Permainan kelompok</li>
+                        <li>Role-play dan drama</li>
+                        <li>Mainan berbagi dan bergantian</li>
+                        <li>Game kooperatif</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card creative">
+                    <span class="feature-icon">🎨</span>
+                    <h3>Kreativitas & Imajinasi</h3>
+                    <p>Mendorong ekspresi diri dan pengembangan kemampuan artistik.</p>
+                    <ul>
+                        <li>Set seni dan kerajinan</li>
+                        <li>Mainan konstruksi bebas</li>
+                        <li>Alat musik kreatif</li>
+                        <li>Mainan storytelling</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="product-showcase">
+            <h2>🎯 Produk Unggulan Kami</h2>
+            <div class="products">
+                <div class="product">
+                    <span class="product-icon">🧩</span>
+                    <h4>Smart Puzzle Series</h4>
+                    <p>Puzzle interaktif dengan teknologi augmented reality</p>
+                </div>
+                <div class="product">
+                    <span class="product-icon">🏗️</span>
+                    <h4>Dream Builder Blocks</h4>
+                    <p>Blok konstruksi ramah lingkungan dengan panduan STEAM</p>
+                </div>
+                <div class="product">
+                    <span class="product-icon">🎵</span>
+                    <h4>Melody Maker Kit</h4>
+                    <p>Alat musik edukatif untuk pengembangan musikal</p>
+                </div>
+                <div class="product">
+                    <span class="product-icon">🧪</span>
+                    <h4>Little Scientist Lab</h4>
+                    <p>Kit eksperimen sains aman untuk anak-anak</p>
+                </div>
+                <div class="product">
+                    <span class="product-icon">📚</span>
+                    <h4>Story Adventure Books</h4>
+                    <p>Buku interaktif dengan elemen permainan</p>
+                </div>
+                <div class="product">
+                    <span class="product-icon">🎭</span>
+                    <h4>Role Play Collection</h4>
+                    <p>Set bermain peran untuk berbagai profesi</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="benefits">
+            <h2>✨ Mengapa Memilih PT. Playful Dreams?</h2>
+            <div class="benefit-grid">
+                <div class="benefit">
+                    <span class="benefit-icon">🛡️</span>
+                    <h4>100% Aman</h4>
+                    <p>Semua mainan telah lulus uji keamanan SNI dan internasional</p>
+                </div>
+                <div class="benefit">
+                    <span class="benefit-icon">🌱</span>
+                    <h4>Ramah Lingkungan</h4>
+                    <p>Menggunakan bahan daur ulang dan proses produksi berkelanjutan</p>
+                </div>
+                <div class="benefit">
+                    <span class="benefit-icon">👨‍🔬</span>
+                    <h4>Berbasis Riset</h4>
+                    <p>Dikembangkan berdasarkan penelitian perkembangan anak terkini</p>
+                </div>
+                <div class="benefit">
+                    <span class="benefit-icon">🇮🇩</span>
+                    <h4>Produk Lokal</h4>
+                    <p>Bangga buatan Indonesia dengan standar kualitas global</p>
+                </div>
+                <div class="benefit">
+                    <span class="benefit-icon">💝</span>
+                    <h4>Garansi Kepuasan</h4>
+                    <p>Jaminan kepuasan atau uang kembali 30 hari</p>
+                </div>
+                <div class="benefit">
+                    <span class="benefit-icon">🎓</span>
+                    <h4>Konsultasi Gratis</h4>
+                    <p>Konsultasi dengan ahli perkembangan anak secara gratis</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="logo">🏭 PT. PLAYFUL DREAMS</div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <span>Jl. Pendidikan No. 123, Jakarta</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📞</span>
+                    <span>0800-1234-5678</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📧</span>
+                    <span>info@playful-dreams.co.id</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">🌐</span>
+                    <span>www.playful-dreams.co.id</span>
+                </div>
+            </div>
+            <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.8;">
+                "Setiap anak berhak mendapatkan mainan yang mendidik dan menyenangkan. Mari wujudkan masa depan cerah bersama PT. Playful Dreams!"
+            </p>
+        </div>
+    </div>
+</body>
+</html>
